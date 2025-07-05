@@ -2,25 +2,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Message</title>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      max-width: 600px;
-      margin: 60px auto;
-      line-height: 1.6;
-      color: #333;
-      padding: 0 20px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Message</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .signature {
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
  
   <div class="container">
         <p>"Every time you click, a coder smiles. Somewhere. Maybe."</p>
-    </div>
+  </div>
 
   <script>
     // Your Firebase config

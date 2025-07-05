@@ -54,7 +54,7 @@
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
-        const countRef = db.ref("views");
+        const countRef = db.ref("views_spp");
 
         countRef.transaction(current => {
             return (current || 0) + 1;

